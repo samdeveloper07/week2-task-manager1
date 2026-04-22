@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Manager | Week 2 Project</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+      <h1 class="logo">✦ Task Manager</h1>
+      <div class="header-right">
+        <button class="icon-btn" id="themeToggleBtn" title="Toggle theme">🌙</button>
+        <button class="clear-btn" id="clearDoneBtn">Clear Done</button>
+        <button class="icon-btn" id="exportBtn" title="Export tasks">⬇ Export</button>
+      </div>
+    </header>
+
+    <!-- INPUT SECTION -->
+    <section class="input-card">
+      <div class="input-row">
+        <input
+          type="text"
+          id="taskInput"
+          class="task-input"
+          placeholder="Add a new task... (Enter to add)"
+          maxlength="200"
+          autocomplete="off"
+        />
+        <button class="add-btn" id="addTaskBtn">+ Add</button>
+      </div>
+      <div class="meta-row">
+        <select id="prioritySelect" class="meta-select">
+          <option value="low">🟢 Low Priority</option>
+          <option value="medium" selected>🟡 Medium Priority</option>
+          <option value="high">🔴 High Priority</option>
+        </select>
+        <input type="date" id="dueDate" class="date-input" />
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats-bar">
+      <div class="stat-card total">
+        <div class="stat-num" id="statTotal">0</div>
+        <div class="stat-lbl">Total</div>
+      </div>
+      <div class="stat-card active-s">
+        <div class="stat-num" id="statActive">0</div>
+        <div class="stat-lbl">Active</div>
+      </div>
+      <div class="stat-card done-s">
+        <div class="stat-num" id="statDone">0</div>
+        <div class="stat-lbl">Done</div>
+      </div>
+      <div class="stat-card over-s">
+        <div class="stat-num" id="statOverdue">0</div>
+        <div class="stat-lbl">Overdue</div>
+      </div>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-wrap">
+      <div class="prog-label">
+        <span>Progress</span>
+        <span id="progPct">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- FILTER + SEARCH TOOLBAR -->
+    <div class="toolbar">
+      <div class="filters" id="filterBtns">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Done</button>
+        <button class="filter-btn" data-filter="high">🔥 High</button>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search tasks..."
+        />
+      </div>
+    </div>
+
+    <!-- TASK LIST -->
+    <div class="task-list" id="taskList"></div>
+
+    <!-- KEYBOARD HINT -->
+    <p class="ks-hint">
+      Enter to add &nbsp;·&nbsp; ✎ to edit &nbsp;·&nbsp; ✕ to delete &nbsp;·&nbsp; Ctrl+Z to undo
+    </p>
+
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast"></div>
+
+  <!-- JS FILES — load order matters! -->
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

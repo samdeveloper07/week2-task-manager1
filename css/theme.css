@@ -1,0 +1,44 @@
+/* =============================================
+   THEME.CSS — Color variables only
+   Switching data-theme on <html> swaps all colors
+   ============================================= */
+
+[data-theme="dark"] {
+  --bg-primary:    #0f1117;
+  --bg-secondary:  #1a1d27;
+  --bg-tertiary:   #242838;
+  --bg-hover:      #2e3347;
+
+  --accent:        #6c63ff;
+  --accent-hover:  #574fd6;
+  --success:       #43e97b;
+  --warning:       #f9a825;
+  --danger:        #ff4757;
+
+  --text-primary:  #e8eaf0;
+  --text-secondary:#9ba3c0;
+  --text-muted:    #6b7395;
+
+  --border:        rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+}
+
+[data-theme="light"] {
+  --bg-primary:    #ffffff;
+  --bg-secondary:  #f4f5f9;
+  --bg-tertiary:   #eceef5;
+  --bg-hover:      #e4e6f0;
+
+  --accent:        #5b52e8;
+  --accent-hover:  #4840cc;
+  --success:       #1faa55;
+  --warning:       #d48000;
+  --danger:        #e02020;
+
+  --text-primary:  #1a1d2e;
+  --text-secondary:#4a5070;
+  --text-muted:    #8890aa;
+
+  --border:        rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+}

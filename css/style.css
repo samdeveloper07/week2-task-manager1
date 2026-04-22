@@ -1,0 +1,503 @@
+/* =============================================
+   STYLE.CSS — Layout, components, animations
+   Uses CSS variables defined in theme.css
+   ============================================= */
+
+/* === RESET & BASE === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* === APP WRAPPER === */
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* === HEADER === */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), #ff6584);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.icon-btn,
+.clear-btn {
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border-strong);
+  color: var(--text-secondary);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.icon-btn:hover,
+.clear-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* === INPUT CARD === */
+.input-card {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.task-input {
+  flex: 1;
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 9px 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.task-input:focus {
+  border-color: var(--accent);
+}
+
+.task-input::placeholder {
+  color: var(--text-muted);
+}
+
+.add-btn {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  padding: 9px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.add-btn:hover  { opacity: 0.85; }
+.add-btn:active { transform: scale(0.97); }
+
+.meta-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.meta-select,
+.date-input {
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border-strong);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  padding: 5px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+}
+
+.meta-select:focus,
+.date-input:focus {
+  border-color: var(--accent);
+}
+
+/* === STATS BAR === */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-lbl {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.total   .stat-num { color: var(--accent); }
+.active-s .stat-num { color: #38bdf8; }
+.done-s  .stat-num { color: var(--success); }
+.over-s  .stat-num { color: var(--danger); }
+
+/* === PROGRESS BAR === */
+.progress-wrap {
+  margin-bottom: 1rem;
+}
+
+.prog-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.progress-bar-bg {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  height: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent), var(--success));
+  height: 4px;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* === TOOLBAR === */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filters {
+  display: flex;
+  gap: 4px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 0.5px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.filter-btn:hover:not(.active) {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* === SEARCH === */
+.search-wrap {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.search-input {
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px 5px 28px;
+  color: var(--text-primary);
+  font-size: 12px;
+  outline: none;
+  width: 160px;
+  transition: border-color 0.15s, width 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  width: 200px;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* === TASK LIST === */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* === TASK ITEM === */
+.task-item {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: grab;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.task-item:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--border-strong);
+}
+
+.task-item.dragging {
+  opacity: 0.4;
+  border-style: dashed;
+  cursor: grabbing;
+}
+
+.task-item.drag-over {
+  border-color: var(--accent);
+  transform: scale(1.01);
+}
+
+.task-item.done .task-title {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* === DRAG HANDLE === */
+.drag-handle {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  cursor: grab;
+  padding: 0 2px;
+  flex-shrink: 0;
+  opacity: 0.4;
+  transition: opacity 0.15s;
+}
+
+.task-item:hover .drag-handle {
+  opacity: 1;
+}
+
+.drag-handle span {
+  display: block;
+  width: 14px;
+  height: 1.5px;
+  background: var(--text-muted);
+  border-radius: 2px;
+}
+
+/* === CHECKBOX === */
+.check-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #fff;
+  transition: all 0.15s;
+}
+
+.check-btn:hover  { border-color: var(--success); }
+.check-btn.checked {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+/* === TASK BODY === */
+.task-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+
+/* === PRIORITY BADGES === */
+.priority-badge {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.p-low  { background: rgba(67,  233, 123, 0.15); color: var(--success); }
+.p-med  { background: rgba(249, 168,  37, 0.15); color: var(--warning); }
+.p-high { background: rgba(255,  71,  87, 0.15); color: var(--danger);  }
+
+/* === DUE DATE LABEL === */
+.due-label {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.due-label.overdue { color: var(--danger);  }
+.due-label.today   { color: var(--warning); }
+
+/* === ACTION BUTTONS (Edit / Delete) === */
+.task-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.task-item:hover .task-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  background: var(--bg-hover);
+  border: 0.5px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.action-btn:hover            { color: var(--text-primary); }
+.action-btn.delete-btn:hover { color: var(--danger);       }
+
+/* === INLINE EDIT INPUT === */
+.edit-input {
+  background: var(--bg-hover);
+  border: 0.5px solid var(--accent);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 14px;
+  padding: 2px 6px;
+  outline: none;
+  width: 100%;
+}
+
+/* === EMPTY STATE === */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+}
+
+.empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.empty-msg  { font-size: 14px; }
+
+/* === KEYBOARD HINT === */
+.ks-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* === TOAST NOTIFICATION === */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-hover);
+  border: 0.5px solid var(--border-strong);
+  color: var(--text-primary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 100;
+}
+
+.toast.show { opacity: 1; }
+
+/* === RESPONSIVE === */
+@media (max-width: 500px) {
+  .stats-bar           { grid-template-columns: repeat(2, 1fr); }
+  .filters             { flex-wrap: wrap; }
+  .search-input        { width: 130px; }
+  .search-input:focus  { width: 160px; }
+}
